@@ -108,6 +108,9 @@ CACHES = {
 }
 
 
+## static
+STATIC_ROOT = env('STATIC_URL')
+
 # LOGGING CONFIGURATION
 # ------------------------------------------------------------------------------
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#logging
