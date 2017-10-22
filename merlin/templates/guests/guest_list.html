@@ -4,7 +4,7 @@
     <h2>Guests</h2>
     <ul>
         {% for guest in object_list %}
-            <li><b>Name:</b> {{ guest }} <b>Attending:</b> {{ guest.attending }}</li>
+            <li><b>Name:</b> {{ guest }} <b>Attending:</b> {{ guest.attending|yesno:"yes,no" }}</li>
         {% endfor %}
     </ul>
 {% endblock %}
