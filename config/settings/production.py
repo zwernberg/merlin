@@ -62,7 +62,7 @@ INSTALLED_APPS += ['gunicorn', ]
 # EMAIL
 # ------------------------------------------------------------------------------
 DEFAULT_FROM_EMAIL = env('DJANGO_DEFAULT_FROM_EMAIL',
-                         default='merlin <noreply@zach-sarah-wedding.herokuapp.com>')
+                         default='merlin <noreply@sarahandzach.love>')
 EMAIL_SUBJECT_PREFIX = env('DJANGO_EMAIL_SUBJECT_PREFIX', default='[merlin]')
 SERVER_EMAIL = env('DJANGO_SERVER_EMAIL', default=DEFAULT_FROM_EMAIL)
 
