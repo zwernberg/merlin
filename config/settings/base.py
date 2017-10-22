@@ -55,6 +55,7 @@ THIRD_PARTY_APPS = [
 LOCAL_APPS = [
     # custom users app
     'merlin.users.apps.UsersConfig',
+    'merlin.guests',
     # Your stuff: custom apps go here
 ]
 
@@ -111,7 +112,7 @@ MANAGERS = ADMINS
 # Uses django-environ to accept uri format
 # See: https://django-environ.readthedocs.io/en/latest/#supported-types
 DATABASES = {
-    'default': env.db('DATABASE_URL', default='postgres:///merlin'),
+    'default': env.db('DATABASE_URL', default='sqlite:///dev.sqlite3'),
 }
 DATABASES['default']['ATOMIC_REQUESTS'] = True
 

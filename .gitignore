@@ -305,4 +305,7 @@ pip-selfcheck.json
 
 merlin/media/
 
+##dev database
+*.sqlite3
+
 
