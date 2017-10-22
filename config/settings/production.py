@@ -109,7 +109,7 @@ CACHES = {
 
 
 ## static
-STATIC_ROOT = env('STATIC_URL')
+STATIC_URL = env('STATIC_URL')
 
 # LOGGING CONFIGURATION
 # ------------------------------------------------------------------------------
