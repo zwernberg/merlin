@@ -2,9 +2,13 @@ from django.contrib import admin
 from merlin.guests.models import Guest, HouseHold
 
 # Register your models here.
+def make_attending(modeladmin, request, queryset):
+    queryset.update(attending='1')
+
 class guestAdmin(admin.ModelAdmin):
     list_display = ('__str__', 'tribe', 'attending', 'household')
     list_filter = ('tribe', 'attending')
+    actions = [make_attending]
 
 class GuestInline(admin.TabularInline):
     model = Guest
