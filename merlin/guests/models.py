@@ -21,7 +21,7 @@ class HouseHold(models.Model):
 
 
 class Guest(models.Model):
-    BOOL_CHOICES = (('0', 'No'), ('1', 'Yes'), ('3', 'Maybe'))
+    BOOL_CHOICES = (('0', 'No'), ('1', 'Yes'), ('2', 'Maybe'))
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
     attending = models.CharField(default=1, choices=BOOL_CHOICES, max_length=1)
