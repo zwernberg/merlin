@@ -10,13 +10,18 @@ TRIBE_CHOICES = (
 class HouseHold(models.Model):
     family_name = models.CharField(max_length=100)
     address = models.CharField(max_length=500, blank=True)
+    tribe = models.CharField(max_length=1, choices=TRIBE_CHOICES, default = 1)
+
+    def family_size(self):
+        return self.guests.count()
 
     def __str__(self):
         return self.family_name
 
+
+
 class Guest(models.Model):
     BOOL_CHOICES = (('0', 'No'), ('1', 'Yes'), ('3', 'Maybe'))
-
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
     attending = models.CharField(default=1, choices=BOOL_CHOICES, max_length=1)
