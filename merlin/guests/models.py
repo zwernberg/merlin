@@ -16,7 +16,7 @@ class HouseHold(models.Model):
         return self.guests.count()
 
     def has_address(self):
-        return self.address in [None, '']
+        return not (self.address in [None, ''])
     has_address.boolean = True
 
     def __str__(self):
