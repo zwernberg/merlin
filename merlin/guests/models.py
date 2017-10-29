@@ -15,6 +15,10 @@ class HouseHold(models.Model):
     def family_size(self):
         return self.guests.count()
 
+    def has_address(self):
+        return self.address in [None, '']
+    has_address.boolean = True
+
     def __str__(self):
         return self.family_name
 

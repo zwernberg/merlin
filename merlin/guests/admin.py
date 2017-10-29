@@ -1,4 +1,5 @@
 from django.contrib import admin
+from django.utils.translation import gettext_lazy as _
 from merlin.guests.models import Guest, HouseHold
 
 # Register your models here.
@@ -10,6 +11,24 @@ def add_to_wernberg_tribe(modeladmin, request, queryset):
 
 def add_to_larson_tribe(modelAdmin, request, queryset):
     queryset.update(tribe='1')
+
+
+
+class HasAddressFilter(admin.SimpleListFilter):
+    title = _('Has Address')
+    parameter_name = 'address__isnull'
+
+    def lookups(self, request, model_admin):
+        return (
+            ('True', _('No')),
+            ('False', _('Yes')),
+        )
+
+    def queryset(self, request, queryset):
+        if self.value() == 'True':
+            return queryset.filter(address__exact='')
+        if self.value() == 'False':
+            return queryset.filter(address__gt='')
 
 class guestAdmin(admin.ModelAdmin):
     list_display = ('__str__', 'tribe', 'attending', 'household',)
@@ -25,8 +44,8 @@ class GuestInline(admin.TabularInline):
     extra = 1
 
 class HouseHoldAdmin(admin.ModelAdmin):
-    list_display = ('__str__', 'tribe', 'family_size')
-    list_filter = ('tribe',)
+    list_display = ('__str__', 'tribe', 'family_size', 'has_address')
+    list_filter = ('tribe', HasAddressFilter)
     inlines = [
         GuestInline,
     ]
@@ -34,9 +53,6 @@ class HouseHoldAdmin(admin.ModelAdmin):
         add_to_wernberg_tribe,
         add_to_larson_tribe,
     ]
-
-    # def family_size(self, obj):
-    #     return obj.guest_set.count()
 
 admin.site.register(Guest, guestAdmin)
 admin.site.register(HouseHold, HouseHoldAdmin)
