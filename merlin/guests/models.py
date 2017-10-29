@@ -5,6 +5,7 @@ TRIBE_CHOICES = (
     ('0', 'Wernberg'),
     ('1', 'Larson'),
     ('2', 'Both'),
+    ('3', 'Larson-Wernberg')
 )
 
 class HouseHold(models.Model):
