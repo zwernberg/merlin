@@ -36,6 +36,7 @@ class HasAddressFilter(admin.SimpleListFilter):
 class guestAdmin(admin.ModelAdmin):
     list_display = ('__str__', 'tribe', 'attending', 'household',)
     list_filter = ('tribe', 'attending')
+    search_fields = ("first_name", "last_name")
     actions = [
         make_attending,
         add_to_wernberg_tribe,
@@ -49,7 +50,7 @@ class GuestInline(admin.TabularInline):
 class HouseHoldAdmin(ImportExportModelAdmin, admin.ModelAdmin):
 
     resouce_class = HouseholdResource
-
+    search_fields = ("family_name", )
     list_display = ('__str__', 'tribe', 'family_size', 'has_address')
     list_filter = ('tribe', HasAddressFilter)
     inlines = [
