@@ -1,6 +1,9 @@
 from django.contrib import admin
 from django.utils.translation import gettext_lazy as _
 from merlin.guests.models import Guest, HouseHold
+from import_export.admin import ImportExportModelAdmin
+from merlin.guests.resources import HouseholdResource
+
 
 # Register your models here.
 def make_attending(modeladmin, request, queryset):
@@ -43,7 +46,10 @@ class GuestInline(admin.TabularInline):
     model = Guest
     extra = 1
 
-class HouseHoldAdmin(admin.ModelAdmin):
+class HouseHoldAdmin(ImportExportModelAdmin, admin.ModelAdmin):
+
+    resouce_class = HouseholdResource
+
     list_display = ('__str__', 'tribe', 'family_size', 'has_address')
     list_filter = ('tribe', HasAddressFilter)
     inlines = [
