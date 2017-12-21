@@ -11,6 +11,7 @@ TRIBE_CHOICES = (
 class HouseHold(models.Model):
     family_name = models.CharField(max_length=100)
     address = models.CharField(max_length=500, blank=True)
+    save_the_date = models.BooleanField(default=False, verbose_name="Save The Date Sent")
     tribe = models.CharField(max_length=1, choices=TRIBE_CHOICES, default = 1)
 
     def family_size(self):

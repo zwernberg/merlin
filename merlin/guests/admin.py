@@ -51,8 +51,8 @@ class HouseHoldAdmin(ImportExportModelAdmin, admin.ModelAdmin):
 
     resouce_class = HouseholdResource
     search_fields = ("family_name", )
-    list_display = ('__str__', 'tribe', 'family_size', 'has_address')
-    list_filter = ('tribe', HasAddressFilter)
+    list_display = ('__str__', 'tribe', 'family_size', 'has_address', 'save_the_date')
+    list_filter = ('tribe', 'save_the_date', HasAddressFilter)
     inlines = [
         GuestInline,
     ]
