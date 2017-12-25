@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.utils.translation import gettext_lazy as _
 from merlin.guests.models import Guest, HouseHold
 from import_export.admin import ImportExportModelAdmin
-from merlin.guests.resources import HouseholdResource
+from merlin.guests.resources import HouseholdResource, GuestResource
 
 
 # Register your models here.
@@ -33,7 +33,9 @@ class HasAddressFilter(admin.SimpleListFilter):
         if self.value() == 'False':
             return queryset.filter(address__gt='')
 
-class guestAdmin(admin.ModelAdmin):
+class guestAdmin(ImportExportModelAdmin, admin.ModelAdmin):
+    resouce_class = GuestResource
+
     list_display = ('__str__', 'tribe', 'attending', 'household',)
     list_filter = ('tribe', 'attending')
     search_fields = ("first_name", "last_name")
