@@ -51,6 +51,7 @@ THIRD_PARTY_APPS = [
     'allauth.socialaccount',  # registration
     'import_export',
     'adminsortable',
+    'rest_framework',
 ]
 
 # Apps specific for this project go here.
@@ -59,6 +60,7 @@ LOCAL_APPS = [
     'merlin.users.apps.UsersConfig',
     'merlin.guests',
     'merlin.music',
+    'merlin.invite',
     # Your stuff: custom apps go here
 ]
 

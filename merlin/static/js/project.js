@@ -19,3 +19,24 @@ Issues with the above approach:
 4. Undocumented: No mention in the documentation, or it's too hard for me to find
 */
 $('.form-group').removeClass('row');
+
+
+$(document).ready(function() {
+    $("#decline-button").click(function(event){
+         $.ajax({
+              type:"POST",
+              url:"/invite/decline/",
+              data: {
+                     'name': $('#decline-name').val(),
+                     'message': $('#decline-message').val()
+                     },
+              success: function(){
+                  $('#message').html('<div class="alert alert-success text-center">Thank you for submitting.</div>')
+              }
+         });
+         $('#decline-name').val("")
+         $('#decline-message').val("")
+         return false; //<---- move it here
+    });
+
+});
