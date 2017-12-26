@@ -309,3 +309,4 @@ merlin/media/
 *.sqlite3
 
 
+.vscode/
