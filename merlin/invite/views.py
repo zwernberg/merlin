@@ -1,5 +1,6 @@
 from django.shortcuts import render
-from rest_framework import viewsets
+from rest_framework import viewsets, generics
+from rest_framework.response import Response
 from merlin.invite.serializers import RSVPSerializer, DeclineSerializer
 from merlin.invite.models import RSVP, Decline
 from rest_framework.permissions import IsAdminUser,AllowAny
@@ -9,8 +10,17 @@ from rest_framework.permissions import IsAdminUser,AllowAny
 class RSVPViewSet(viewsets.ModelViewSet):
     queryset = RSVP.objects.all()
     serializer_class = RSVPSerializer
-    #permission_classes = [IsAccountAdminOrReadOnly]
 
+    # #permission_classes = [IsAccountAdminOrReadOnly]
+    # def get_serializer(self, *args, **kwargs):
+    #     if "data" in kwargs:
+    #         data = kwargs["data"]
+
+    #         # check if many is required
+    #         if isinstance(data, list):
+    #             kwargs["many"] = True
+
+    #     return super(RSVPViewSet, self).get_serializer(*args, **kwargs)
 
     def get_permissions(self):
         """
