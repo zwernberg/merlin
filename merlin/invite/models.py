@@ -1,13 +1,13 @@
 from django.db import models
 
-FILLET = 0
+STEAK = 0
 SALMON = 1
 PENNE = 2
 KIDS = 3
 NONE = 999
 # Create your models here.
 FOOD_CHOICES = (
-    (FILLET, 'FILLET'),
+    (STEAK, 'STEAK'),
     (SALMON, 'SALMON'),
     (PENNE, 'PENNE'),
     (KIDS, 'KIDS'),
