@@ -5,7 +5,7 @@ from merlin.invite.models import RSVP, Guest, Decline
 class GuestAdmin(admin.TabularInline):
     model = Guest
 class RSVPAdmin(admin.ModelAdmin):
-    list_display = ('__str__', 'attending', 'food_choice', 'created')
+    list_display = ('__str__', 'attending', 'reserved_count', 'food_choice', 'created')
     list_filter = ('attending',)
     ordering = ['created']
     inlines = [

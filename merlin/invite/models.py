@@ -22,6 +22,9 @@ class RSVP(models.Model):
     song_choice = models.TextField(blank=True)
     message = models.TextField(blank=True)
 
+    def reserved_count(self):
+        return 1 + self.guests.count()
+
     def __str__(self):
         return self.name
 
